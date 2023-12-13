@@ -3,19 +3,19 @@ PACKER = sdcc-packihx
 CFLAGS = -mmcs51 --std-sdcc11
 HEADERS = -I/usr/share/sdcc/include
 
-all: LED.hex
+all: LED2.hex
 
-LED.hex: LED.ihx
+LED2.hex: LED2.ihx
 	$(PACKER) $< > $@
 
-LED.ihx: LED.rel
+LED2.ihx: LED2.rel
 	$(CC) -o $@ $^
 
-LED.rel: LED.c
+LED2.rel: LED2.c
 	$(CC) -c $< $(CFLAGS) $(HEADERS)
 
 .PHONY: flash
-flash: LED.hex
+flash: LED2.hex
 	sudo ../stcflash $<
 
 OBJECTS := $(shell find . -name "LED.*")
