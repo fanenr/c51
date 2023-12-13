@@ -3,7 +3,7 @@
 #define LED P1_0
 
 void
-main()
+main(void)
 {
     for (int i = 0;;) {
         LED = 0;
