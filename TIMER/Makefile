@@ -3,22 +3,22 @@ PACKER = sdcc-packihx
 CFLAGS = -mmcs51 --std-sdcc11
 HEADERS = -I/usr/share/sdcc/include
 
-all: LED2.hex
+all: TIMER.hex
 
-LED2.hex: LED2.ihx
+TIMER.hex: TIMER.ihx
 	$(PACKER) $< > $@
 
-LED2.ihx: LED2.rel
+TIMER.ihx: TIMER.rel
 	$(CC) -o $@ $^
 
-LED2.rel: LED2.c
+TIMER.rel: TIMER.c
 	$(CC) -c $< $(CFLAGS) $(HEADERS)
 
 .PHONY: flash
-flash: LED2.hex
+flash: TIMER.hex
 	sudo ../stcflash $<
 
-OBJECTS := $(shell find . -name "LED2.*")
+OBJECTS := $(shell find . -name "TIMER.*")
 OBJECTS := $(filter-out %.c, $(OBJECTS))
 
 .PHONY: clean
