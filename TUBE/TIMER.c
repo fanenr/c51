@@ -1,22 +1,5 @@
+#include "TIMER.h"
 #include <mcs51/8052.h>
-
-#define CLOCK_CYCLE   (1.0 / 11059200)
-#define MACHINE_CYCLE (12 * CLOCK_CYCLE)
-
-static void delay(float secs);
-
-#define LED P1_0
-
-void
-main(void)
-{
-    for (;;) {
-        LED = 0;
-        delay(2);
-        LED = 1;
-        delay(2);
-    }
-}
 
 void
 delay(float secs)
