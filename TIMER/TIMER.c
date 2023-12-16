@@ -1,7 +1,8 @@
 #include <mcs51/8052.h>
 
-#define CLOCK_CYCLE   (1.0 / 11059200)
-#define MACHINE_CYCLE (12 * CLOCK_CYCLE)
+#define CLOCK_CYCLE    (1.0 / 11059200)
+#define MACHINE_CYCLE  (12 * CLOCK_CYCLE)
+#define MACHINE_CYCLE2 (1000 * MACHINE_CYCLE)
 
 static void delay(float secs);
 
@@ -12,16 +13,18 @@ main(void)
 {
     for (;;) {
         LED = 0;
-        delay(2);
+        delay(3000);
         LED = 1;
-        delay(2);
+        delay(3000);
     }
 }
 
 void
-delay(float secs)
+delay(float msec)
 {
-    unsigned long cycles = secs / MACHINE_CYCLE;
+    ET0 = 0;
+
+    unsigned long cycles = msec / MACHINE_CYCLE2;
     unsigned residue = 0xffff - cycles % 0xffff;
     unsigned times = cycles / 0xffff;
 
@@ -38,11 +41,13 @@ delay(float secs)
         }
     }
 
-    for (unsigned i = 0; i < times; i++) {
+    for (; times > 0; times--) {
         TL0 = 0;
         TH0 = 0;
         TF0 = 0;
         while (TF0 != 1)
             ;
     }
+
+    ET0 = 1;
 }
