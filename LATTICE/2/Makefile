@@ -8,15 +8,18 @@ all: LATTICE.hex
 LATTICE.hex: LATTICE.ihx
 	$(PACKER) $< > $@
 
-LATTICE.ihx: LATTICE.rel
+LATTICE.ihx: LATTICE.rel TIMER.rel
 	$(CC) -o $@ $^
 
-LATTICE.rel: LATTICE.c
+LATTICE.rel: LATTICE.c TIMER.h
+	$(CC) -c $< $(CFLAGS) $(HEADERS)
+
+TIMER.rel: TIMER.c TIMER.h
 	$(CC) -c $< $(CFLAGS) $(HEADERS)
 
 .PHONY: flash
 flash: LATTICE.hex
-	sudo ../stcflash $<
+	sudo ../../stcflash $<
 
 OBJECTS := $(shell find . -name "LATTICE.*")
 OBJECTS := $(filter-out %.c, $(OBJECTS))
