@@ -1,21 +1,34 @@
 #include <mcs51/8052.h>
 
-#define LED   P0_0
-#define ADDR0 P1_0
-#define ADDR1 P1_1
-#define ADDR2 P1_2
-#define ADDR3 P1_3
-#define ENLED P1_4
+#define SER P3_4
+#define SCK P3_5
+#define RCK P3_6
+
+typedef unsigned char uchar;
+
+void
+send_byte(uchar data1, uchar data2)
+{
+    SCK = 0;
+    RCK = 0;
+    for (uchar i = 0; i < 8; i++) {
+        SER = data1 & (1 << i);
+        SCK = 1;
+        SCK = 0;
+    }
+    for (uchar i = 0; i < 8; i++) {
+        SER = data2 & (1 << i);
+        SCK = 1;
+        SCK = 0;
+    }
+    RCK = 1;
+    RCK = 0;
+}
 
 void
 main(void)
 {
-    ENLED = 0;
-    ADDR3 = 0;
-    ADDR2 = 0;
-    ADDR1 = 0;
-    ADDR0 = 0;
-    LED = 0;
-    while (1)
+    send_byte(0x7f, 1);
+    for (;;)
         ;
 }
