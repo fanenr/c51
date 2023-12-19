@@ -1,12 +1,13 @@
-#include "TIMER.h"
+#include "timer.h"
 #include <mcs51/8052.h>
 
 void
-delay(float secs)
+delay(u32 cycles)
 {
-    unsigned long cycles = secs / MACHINE_CYCLE;
-    unsigned residue = 0xffff - cycles % 0xffff;
-    unsigned times = cycles / 0xffff;
+    ET0 = 0;
+
+    u16 times = cycles / 0xffff;
+    u16 residue = 0xffff - cycles % 0xffff;
 
     TMOD = 1;
 
@@ -21,11 +22,13 @@ delay(float secs)
         }
     }
 
-    for (unsigned i = 0; i < times; i++) {
+    for (; times > 0; times--) {
         TL0 = 0;
         TH0 = 0;
         TF0 = 0;
         while (TF0 != 1)
             ;
     }
+
+    ET0 = 1;
 }

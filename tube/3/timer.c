@@ -1,18 +1,13 @@
-#include "TIMER.h"
+#include "timer.h"
 #include <mcs51/8052.h>
 
-#define CLOCK_CYCLE    (1.0 / 11059200)
-#define MACHINE_CYCLE  (12 * CLOCK_CYCLE)
-#define MACHINE_CYCLE2 (1000 * MACHINE_CYCLE)
-
 void
-delay(float msec)
+delay(u32 cycles)
 {
     ET0 = 0;
 
-    unsigned long cycles = msec / MACHINE_CYCLE2;
-    unsigned residue = 0xffff - cycles % 0xffff;
-    unsigned times = cycles / 0xffff;
+    u16 times = cycles / 0xffff;
+    u16 residue = 0xffff - cycles % 0xffff;
 
     TMOD = 1;
 
