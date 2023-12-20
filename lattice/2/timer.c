@@ -1,13 +1,13 @@
-#include "TIMER.h"
+#include "timer.h"
 #include <mcs51/8052.h>
 
 void
-delay(unsigned long cycles)
+delay(u32 cycles)
 {
     ET0 = 0;
 
-    unsigned residue = 0xffff - cycles % 0xffff;
-    unsigned times = cycles / 0xffff;
+    u16 times = cycles / 0xffff;
+    u16 residue = 0xffff - cycles % 0xffff;
 
     TMOD = 1;
 
