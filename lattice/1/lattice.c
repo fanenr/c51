@@ -1,22 +1,21 @@
+#include "types.h"
 #include <mcs51/8052.h>
 
 #define SER P3_4
 #define SCK P3_5
 #define RCK P3_6
 
-typedef unsigned char uchar;
-
 void
-send_byte(uchar data1, uchar data2)
+send_byte(u8 data1, u8 data2)
 {
     SCK = 0;
     RCK = 0;
-    for (uchar i = 0; i < 8; i++) {
+    for (u8 i = 0; i < 8; i++) {
         SER = data1 & (1 << i);
         SCK = 1;
         SCK = 0;
     }
-    for (uchar i = 0; i < 8; i++) {
+    for (u8 i = 0; i < 8; i++) {
         SER = data2 & (1 << i);
         SCK = 1;
         SCK = 0;
