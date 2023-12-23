@@ -4,7 +4,8 @@
 void
 delay_cycles(u32 cycles)
 {
-    TMOD |= 1;
+    TMOD &= 0xf0;
+    TMOD |= 0x01;
 
     u16 residue = 0xffff - (u16)cycles;
     TL0 = residue;
