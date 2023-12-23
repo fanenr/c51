@@ -8,8 +8,8 @@ main(void)
 {
     for (;;) {
         LED = 0xfe;
-        delay(0xffff);
+        delay(1000000);
         LED = 0xff;
-        delay(0xffff);
+        delay(1000000);
     }
 }
