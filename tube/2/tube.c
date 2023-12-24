@@ -17,13 +17,14 @@ __code u8 tube_char[] = {
 void
 clear(void) __interrupt(1)
 {
-    TUBE = 0xff;
+    TUBE = 0;
 }
 
 void
 main(void)
 {
-    EA = 1;
+    EA = 0;
+    ET0 = 0;
 
     for (;;) {
         for (u8 i = 0; i < 8; i++) {
@@ -35,7 +36,8 @@ main(void)
             WE = 0;
             TUBE = tube_char[i + 1];
 
-            delay(921659);
+            delay_secs(1);
+            TUBE = 0;
         }
     }
 }

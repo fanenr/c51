@@ -17,6 +17,6 @@ main(void)
 {
     for (u32 i = 0;; i++) {
         TUBE = tube_char[i % 20];
-        delay(921659);
+        delay_secs(1);
     }
 }

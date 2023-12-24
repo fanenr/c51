@@ -23,7 +23,7 @@ show_tube(void)
         WE = 0;
         TUBE = tube[i];
 
-        delay(1000);
+        delay_msecs(2);
         TUBE = 0;
     }
 }
