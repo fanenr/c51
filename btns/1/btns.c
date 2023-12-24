@@ -15,13 +15,12 @@ __code u8 tube_char[] = {
 u8
 scan_btns(void)
 {
+    P3 = 0xf0;
     u8 val = 0;
 
-    P3 = 0xf0;
     if (P3 == 0xf0)
         return 0;
-
-    delay(1000);
+    delay_msecs(10);
 
     switch (P3) {
     case 0xe0:
@@ -59,8 +58,8 @@ scan_btns(void)
 
     while (P3 != 0x0f)
         ;
-
-    delay(1000);
+    delay_msecs(10);
+    
     return val;
 }
 

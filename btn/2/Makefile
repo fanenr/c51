@@ -5,7 +5,7 @@ CFLAGS  = -mmcs51 --std-sdcc11
 HEADERS = -I/usr/share/sdcc/include -I../../
 
 targets := btn
-deps    :=
+deps    := timer
 
 all: $(targets:%=%.hex)
 
