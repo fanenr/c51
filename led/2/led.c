@@ -1,3 +1,4 @@
+#include "timer.h"
 #include "types.h"
 #include <mcs51/8052.h>
 
@@ -6,10 +7,8 @@ main(void)
 {
     u8 cnt = 0;
     for (;;) {
-        P1 = ~(1 << cnt++);
-        for (u16 i = 0; i < 5000; i++)
-            ;
-        if (cnt >= 8)
-            cnt = 0;
+        P1 = ~(1 << (cnt % 8));
+        cnt++;
+        delay_secs(1);
     }
 }

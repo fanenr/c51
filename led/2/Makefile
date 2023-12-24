@@ -1,11 +1,11 @@
-CC = sdcc-sdcc
-PACKER = sdcc-packihx
+CC      = sdcc-sdcc
+PACKER  = sdcc-packihx
 FLASHER = ../../stcflash
-CFLAGS = -mmcs51 --std-sdcc11
+CFLAGS  = -mmcs51 --std-sdcc11
 HEADERS = -I/usr/share/sdcc/include -I../../
 
 targets := led
-deps    :=
+deps    := timer
 
 all: $(targets:%=%.hex)
 
