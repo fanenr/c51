@@ -60,7 +60,7 @@ u8 lattice[8];
 u8 lattice_at = 0;
 
 #define LED P1
-u8 led_cnt = 0;
+u8 led_at = 0;
 
 void
 int_t1(void) __interrupt(3)
@@ -68,8 +68,8 @@ int_t1(void) __interrupt(3)
     static u32 msecs = 0;
 
     if (msecs % 800 == 0) {
-        LED = ~(1 << (led_cnt % 8));
-        led_cnt++;
+        LED = ~(1 << (led_at % 8));
+        led_at++;
     }
 
     if (lattice[lattice_at] != 0) {
@@ -102,9 +102,12 @@ main(void)
 {
     for (u8 i = 0; i < 8; i++)
         tube[i] = tube_char[i];
+
     for (u8 i = 0; i < 8; i++)
         lattice[i] = 1 << i;
+
     loop_int_msecs(0.8);
+
     for (;;)
         ;
 }
