@@ -49,12 +49,12 @@ write_cmd(u8 cmd)
 }
 
 static void
-write_data(u8 ch)
+write_data(u8 data)
 {
     wait();
     LCD_RS = 1;
     LCD_RW = 0;
-    LCD_DB = ch;
+    LCD_DB = data;
     LCD_EN = 1;
     LCD_EN = 0;
 }
