@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-extern void delay(u32 cycles);
+extern void delay (u32 cycles);
 
 #endif

@@ -1,8 +1,8 @@
 #include "int.h"
+#include "lattice.h"
 #include "led.h"
 #include "tube.h"
 #include "types.h"
-#include "lattice.h"
 #include <mcs51/8052.h>
 
 /* led */
@@ -19,41 +19,42 @@ u8 lattice[8], lattice_at;
  * 10-18: A B C d E F H L -
  */
 __code u8 tube_char[] = {
-    0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F,
-    0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71, 0x76, 0x38, 0x40,
+  0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F,
+  0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71, 0x76, 0x38, 0x40,
 };
 
 void
-int_t1(void) __interrupt(3)
+int_t1 (void) __interrupt (3)
 {
-    static u32 msecs;
+  static u32 msecs;
 
-    if (msecs % 800 == 0) {
-        show_led(1 << (led_at % 8));
-        led_at++;
+  if (msecs % 800 == 0)
+    {
+      show_led (1 << (led_at % 8));
+      led_at++;
     }
 
-    show_tube(tube[tube_at % 8], 1 << (tube_at % 8));
-    tube_at++;
+  show_tube (tube[tube_at % 8], 1 << (tube_at % 8));
+  tube_at++;
 
-    show_lattice(lattice[lattice_at % 8], 1 << (lattice_at % 8));
-    lattice_at++;
+  show_lattice (lattice[lattice_at % 8], 1 << (lattice_at % 8));
+  lattice_at++;
 
-    msecs++;
-    loop_int_msecs(0.8);
+  msecs++;
+  loop_int_msecs (0.8);
 }
 
 void
-main(void)
+main (void)
 {
-    for (u8 i = 0; i < 8; i++)
-        tube[i] = tube_char[i];
+  for (u8 i = 0; i < 8; i++)
+    tube[i] = tube_char[i];
 
-    for (u8 i = 0; i < 8; i++)
-        lattice[i] = 1 << i;
+  for (u8 i = 0; i < 8; i++)
+    lattice[i] = 1 << i;
 
-    loop_int_msecs(0.8);
+  loop_int_msecs (0.8);
 
-    for (;;)
-        ;
+  for (;;)
+    ;
 }

@@ -5,6 +5,6 @@
 
 extern u8 tube[8];
 
-extern void show_tube(void);
+extern void show_tube (void);
 
 #endif

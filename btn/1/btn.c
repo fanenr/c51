@@ -6,15 +6,16 @@
 #define BTN0 P3_0
 
 void
-main(void)
+main (void)
 {
-    for (;;)
-        if (BTN0 == 0) {
-            delay_msecs(10);
-            while (BTN0 == 0)
-                ;
-            delay_msecs(10);
-            
-            LED0 = !LED0;
-        }
+  for (;;)
+    if (BTN0 == 0)
+      {
+        delay_msecs (10);
+        while (BTN0 == 0)
+          ;
+        delay_msecs (10);
+
+        LED0 = !LED0;
+      }
 }
