@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-u8 scan_btns(void);
+u8 scan_btns (void);
 
 #endif

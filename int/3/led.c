@@ -4,7 +4,7 @@
 #define LED P1
 
 void
-show_led(u8 val)
+show_led (u8 val)
 {
-    LED = ~val;
+  LED = ~val;
 }

@@ -5,12 +5,13 @@
 #define LED P1_0
 
 void
-main(void)
+main (void)
 {
-    for (u16 i;;) {
-        LED = 0;
-        delay_secs(1);
-        LED = 1;
-        delay_secs(1);
+  for (u16 i;;)
+    {
+      LED = 0;
+      delay_secs (1);
+      LED = 1;
+      delay_secs (1);
     }
 }

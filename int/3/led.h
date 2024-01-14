@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-extern void show_led(u8 val);
+extern void show_led (u8 val);
 
 #endif

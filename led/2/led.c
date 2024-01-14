@@ -3,12 +3,13 @@
 #include <mcs51/8052.h>
 
 void
-main(void)
+main (void)
 {
-    u8 cnt = 0;
-    for (;;) {
-        P1 = ~(1 << (cnt % 8));
-        cnt++;
-        delay_secs(1);
+  u8 cnt = 0;
+  for (;;)
+    {
+      P1 = ~(1 << (cnt % 8));
+      cnt++;
+      delay_secs (1);
     }
 }
