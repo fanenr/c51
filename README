@@ -1,0 +1,12 @@
+8051 MCU (STC89C52) Learning Notes - only on Linux
+
+Prerequisites:
+  sdcc toolchain
+  stcgal
+  make
+
+Build:
+  cd <any-dir> && make
+
+Flash:
+  make flash f=led (stcgal led.ihx)
