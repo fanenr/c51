@@ -1,16 +1,16 @@
-#include "timer.h"
+#include "../timer.h"
 #include <mcs51/8052.h>
 
-#define LED P1
+#define LED P1_0
 
 void
 main (void)
 {
   for (;;)
     {
-      LED = 0xfe;
+      LED = 0;
       delay_secs (1);
-      LED = 0xff;
+      LED = 1;
       delay_secs (1);
     }
 }

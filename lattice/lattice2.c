@@ -1,5 +1,5 @@
+#include "type.h"
 #include "timer.h"
-#include "types.h"
 #include <mcs51/8052.h>
 
 #define SER P3_4
