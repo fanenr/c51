@@ -1,5 +1,4 @@
-#include "timer.h"
-#include "types.h"
+#include "type.h"
 #include <mcs51/8052.h>
 
 #define LCD_DB P0
@@ -8,23 +7,19 @@
 #define LCD_EN P3_4
 
 void init_lcd (void);
-void show_lcd (u8 x, u8 y, const u8 *str, u8 len);
-
-char str1[32] = "hello world, hello 51, hello c.";
-char str2[32] = "hello c, hello 51, hello world.";
+void show_lcd (u8 x, u8 y, const u8 *str);
 
 void
 main (void)
 {
   init_lcd ();
 
-  for (u8 i = 0; i < 31;)
-    {
-      show_lcd (0, 0, str1 + i, 16);
-      show_lcd (0, 1, str2 + i, 16);
-      i = i >= 15 ? 0 : i + 1;
-      delay_msecs (1000);
-    }
+  const u8 *str = "Hello World!";
+  show_lcd (2, 0, str);
+  show_lcd (1, 1, "Love C Forever");
+
+  for (;;)
+    ;
 }
 
 static void
@@ -67,7 +62,7 @@ write_data (u8 data)
 }
 
 void
-show_lcd (u8 x, u8 y, const u8 *str, u8 len)
+show_lcd (u8 x, u8 y, const u8 *str)
 {
   /* set cursor */
   if (y != 0)
@@ -75,8 +70,8 @@ show_lcd (u8 x, u8 y, const u8 *str, u8 len)
   write_cmd (x | 0x80);
 
   /* send data */
-  for (u8 i = 0; i < len && str[i]; i++)
-    write_data (str[i]);
+  while (*str != '\0')
+    write_data (*str++);
 }
 
 void

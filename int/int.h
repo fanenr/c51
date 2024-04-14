@@ -1,7 +1,7 @@
 #ifndef INT_H
 #define INT_H
 
-#include "types.h"
+#include "type.h"
 
 extern void loop_int_cycles (u16 cycles);
 
