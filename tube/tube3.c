@@ -15,6 +15,7 @@ main (void)
 {
   for (u8 i = 0; i < 8; i++)
     tube[i] = tube_char[i];
+  
   for (;;)
     show_tube ();
 }

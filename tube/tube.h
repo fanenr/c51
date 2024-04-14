@@ -1,7 +1,7 @@
 #ifndef TUBE_H
 #define TUBE_H
 
-#include "types.h"
+#include "type.h"
 
 extern u8 tube[8];
 

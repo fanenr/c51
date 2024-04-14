@@ -1,7 +1,7 @@
 #ifndef LATTICE_H
 #define LATTICE_H
 
-#include "types.h"
+#include "type.h"
 
 extern void send_byte (u8 low);
 extern void send_bytes (u8 low, u8 high);
