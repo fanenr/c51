@@ -1,5 +1,5 @@
 #include "timer.h"
-#include "types.h"
+#include "type.h"
 #include <mcs51/8052.h>
 
 #define LED P1
