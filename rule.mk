@@ -13,7 +13,8 @@ flash:
 	$(STCGAL) $(STCGAL_FLAGS) $(f:%=%.ihx)
 
 # clean
-cleans := *.lk *.ihx *.lst *.map *.mem \
-          *.rel *.rst *.sym *.asm *.hex
+objs := *.lk *.lst *.map *.mem \
+          *.rst *.sym *.asm *.rel *.ihx
+
 clean:
-	rm -f $(cleans)
+	rm -f $(objs)
