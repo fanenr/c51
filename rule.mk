@@ -14,7 +14,7 @@ flash:
 
 # clean
 objs := *.lk *.lst *.map *.mem \
-          *.rst *.sym *.asm *.rel *.ihx
+        *.rst *.sym *.asm *.rel *.ihx
 
 clean:
 	rm -f $(objs)

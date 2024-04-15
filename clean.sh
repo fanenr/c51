@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-exts=(
+objs=(
   **/*.lk
   **/*.lst
   **/*.map
@@ -12,4 +12,4 @@ exts=(
   **/*.ihx
 )
 
-rm -f ${exts[@]}
+rm -f ${objs[@]}
