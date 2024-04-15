@@ -6,14 +6,14 @@
 #define WE P2_7
 #define TUBE P0
 
-u8 tube[8];
+u8 tube_data[8];
 
 void
 show_tube (void)
 {
   for (u8 i = 0; i < 8; i++)
     {
-      if (tube[i] == 0)
+      if (tube_data[i] == 0)
         continue;
 
       WE = 1;
@@ -22,7 +22,7 @@ show_tube (void)
 
       DU = 1;
       WE = 0;
-      TUBE = tube[i];
+      TUBE = tube_data[i];
 
       delay_msecs (2);
       TUBE = 0;
