@@ -3,7 +3,7 @@
 
 #include "type.h"
 
-/* tube_data holds 8 chars */
+/* tube_data holds 8 chars: right to left */
 extern u8 tube_data[];
 
 /*
