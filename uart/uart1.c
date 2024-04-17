@@ -1,6 +1,5 @@
-#include "btns.h"
 #include "timer.h"
-#include "types.h"
+#include "type.h"
 #include <mcs51/8052.h>
 
 void
@@ -18,23 +17,27 @@ config_uart (u16 baud)
 void
 int_uart (void) __interrupt (4)
 {
+  if (RI == 1)
+    {
+      RI = 0;
+    }
+
+  if (TI == 1)
+    {
+      TI = 0;
+    }
 }
 
 void
 main (void)
 {
+  EA = 1;
+
   config_uart (4800);
 
-  for (u8 val;;)
+  for (u8 i = 0;; i++)
     {
-      val = scan_btns ();
-
-      if (val == 0)
-        continue;
-
-      SBUF = val;
-      while (TI == 0)
-        ;
-      TI = 0;
+      SBUF = i;
+      delay_secs (1);
     }
 }

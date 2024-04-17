@@ -18,9 +18,6 @@ tube_show (void)
 {
   for (u8 i = 0; i < 8; i++)
     {
-      if (tube_data[i] == 0)
-        continue;
-
       WE = 1;
       DU = 0;
       TUBE = ~(1 << (7 - i));
