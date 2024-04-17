@@ -8,7 +8,7 @@
 
 u8 lattice_data[8];
 
-static void
+static inline void
 send_bytes (u8 hbs, u8 lbs)
 {
   SCK = 0;
@@ -35,8 +35,6 @@ lattice_show (void)
 {
   for (u8 i = 0; i < 8; i++)
     {
-      if (lattice_data[i] == 0)
-        continue;
       send_bytes (~(0x80 >> i), lattice_data[i]);
       delay_msecs (1);
     }
