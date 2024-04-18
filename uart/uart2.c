@@ -1,5 +1,4 @@
 #include "btns.h"
-#include "timer.h"
 #include "type.h"
 #include <mcs51/8052.h>
 
