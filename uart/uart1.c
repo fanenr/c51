@@ -18,21 +18,16 @@ void
 int_uart (void) __interrupt (4)
 {
   if (RI == 1)
-    {
-      RI = 0;
-    }
+    RI = 0;
 
   if (TI == 1)
-    {
-      TI = 0;
-    }
+    TI = 0;
 }
 
 void
 main (void)
 {
   EA = 1;
-
   config_uart (4800);
 
   for (u8 i = 0;; i++)
