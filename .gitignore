@@ -7,3 +7,6 @@
 *.asm
 *.rel
 *.ihx
+*.adb
+*.cdb
+*.omf
