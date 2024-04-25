@@ -8,9 +8,6 @@
 void
 show_tube (u8 val, u8 pos)
 {
-  if (val == 0)
-    return;
-
   TUBE = 0;
 
   WE = 1;

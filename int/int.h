@@ -3,15 +3,20 @@
 
 #include "type.h"
 
-extern void loop_int_cycles (u16 cycles);
+typedef struct int_info_t int_info_t;
 
-#define US_PER_MCYCLE 1.085
-/* #define MAX_LOOP_INT_MS 71.0 */
-
-static inline void
-loop_int_msecs (float msecs)
+struct int_info_t
 {
-  loop_int_cycles (1000 * msecs / US_PER_MCYCLE);
-}
+  u16 cycs;
+  u16 flag : 1;
+  u16 times : 15;
+};
+
+extern int_info_t int_info;
+
+extern void int_event (void) __interrupt (1);
+extern void int_init (u16 us);
+extern void int_start (void);
+extern void int_stop (void);
 
 #endif
