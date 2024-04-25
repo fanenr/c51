@@ -10,6 +10,9 @@ objs=(
   **/*.asm
   **/*.rel
   **/*.ihx
+  **/*.adb
+  **/*.cdb
+  **/*.omf
 )
 
 rm -f ${objs[@]}

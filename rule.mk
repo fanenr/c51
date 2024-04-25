@@ -1,6 +1,6 @@
 # gen ihx
 %.ihx:
-	$(CC) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 # gen rel
 %.rel: %.c
@@ -13,8 +13,8 @@ flash:
 	$(STCGAL) $(STCGAL_FLAGS) $(f:%=%.ihx)
 
 # clean
-objs := *.lk *.lst *.map *.mem \
-        *.rst *.sym *.asm *.rel *.ihx
+objs := *.lk *.lst *.map *.mem *.rst *.sym \
+        *.asm *.rel *.ihx *.adb *.cdb *.omf
 
 clean:
 	rm -f $(objs)
