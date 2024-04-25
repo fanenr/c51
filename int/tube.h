@@ -1,8 +1,8 @@
 #ifndef TUBE_H
 #define TUBE_H
 
-#include "types.h"
+#include "type.h"
 
-extern void show_tube (u8 val, u8 pos);
+extern void tube_show (u8 val, u8 pos);
 
 #endif
