@@ -4,13 +4,14 @@
 int_info_t int_info;
 
 void
-int_init (u16 us)
+int_init (u16 us, int_func_t *fn)
 {
   TR0 = 0;
   TMOD &= 0xf0;
   TMOD |= 0x01;
   ET0 = EA = 1;
 
+  int_info.func = fn;
   int_info.cycs = 0xffff - us;
   int_info.times = int_info.flag = 0;
 }
@@ -32,9 +33,11 @@ int_stop (void)
 void
 int_event (void) __interrupt (1)
 {
-  int_info.flag = 1;
-  int_info.times++;
-
+  TL0 = int_info.cycs;  
   TH0 = int_info.cycs >> 8;
-  TL0 = int_info.cycs;
+
+  int_info.times++;
+  int_info.flag = 1;
+  if (int_info.func)
+    int_info.func ();
 }

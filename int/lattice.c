@@ -6,9 +6,9 @@
 #define RCK P3_6
 
 void
-lattice_show (u8 val, u8 pos)
+lattice_show (u8 val, u8 col)
 {
-  pos = ~pos;
+  col = ~col;
 
   SCK = 0;
   RCK = 1;
@@ -16,7 +16,7 @@ lattice_show (u8 val, u8 pos)
 
   for (u8 i = 0; i < 8; i++)
     {
-      SER = pos & (1 << i);
+      SER = col & (0x80 >> i);
       SCK = 1;
       SCK = 0;
     }
