@@ -51,7 +51,7 @@ show_lattice (void)
   for (u8 i = 0; i < 8; i++)
     {
       if (lattice[i] == 0)
-        continue;
+	continue;
       send_bytes (~(0x80 >> i), lattice[i]);
       delay_msecs (1);
     }

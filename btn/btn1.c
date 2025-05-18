@@ -11,11 +11,11 @@ main (void)
   for (;;)
     if (BTN0 == 0)
       {
-        delay_msecs (10);
-        while (BTN0 == 0)
-          ;
-        delay_msecs (10);
+	delay_msecs (10);
+	while (BTN0 == 0)
+	  ;
+	delay_msecs (10);
 
-        LED0 = !LED0;
+	LED0 = !LED0;
       }
 }

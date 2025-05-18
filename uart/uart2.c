@@ -24,11 +24,11 @@ main (void)
       val = btns_scan ();
 
       if (val == 0)
-        continue;
+	continue;
 
       SBUF = val;
       while (TI == 0)
-        ;
+	;
       TI = 0;
     }
 }

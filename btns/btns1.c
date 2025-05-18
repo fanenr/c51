@@ -70,10 +70,10 @@ main (void)
     {
       key = btns_scan ();
       if (key != 0)
-        {
-          tube_data[0] = tube_char[key % 10];
-          tube_data[1] = tube_char[key / 10];
-        }
+	{
+	  tube_data[0] = tube_char[key % 10];
+	  tube_data[1] = tube_char[key / 10];
+	}
       tube_show ();
     }
 }

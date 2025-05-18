@@ -12,12 +12,12 @@ main (void)
   for (;;)
     if (BTN0 == 0)
       {
-        delay_msecs (10);
-        while (BTN0 == 0)
-          ;
-        delay_msecs (10);
+	delay_msecs (10);
+	while (BTN0 == 0)
+	  ;
+	delay_msecs (10);
 
-        LED = ~(1 << (times % 8));
-        times++;
+	LED = ~(1 << (times % 8));
+	times++;
       }
 }

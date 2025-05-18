@@ -33,7 +33,7 @@ int_stop (void)
 void
 int_event (void) __interrupt (1)
 {
-  TL0 = int_info.cycs;  
+  TL0 = int_info.cycs;
   TH0 = int_info.cycs >> 8;
 
   int_info.times++;

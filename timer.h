@@ -10,7 +10,7 @@ extern void delay_ms (void);
     {                                                                         \
       u32 n = (ms);                                                           \
       while (n--)                                                             \
-        delay_ms ();                                                          \
+	delay_ms ();                                                          \
     }                                                                         \
   while (0)
 
@@ -19,7 +19,7 @@ extern void delay_ms (void);
     {                                                                         \
       u32 n = 1000 * (ss);                                                    \
       while (n--)                                                             \
-        delay_ms ();                                                          \
+	delay_ms ();                                                          \
     }                                                                         \
   while (0)
 
